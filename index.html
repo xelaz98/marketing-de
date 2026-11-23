@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Marketing-Akademie</title>
+<meta name="description" content="Marketing lernen auf Deutsch: Begriffe, Theorie, Wiederholung mit Spaced Repetition, Prüfung und Agentur-Simulation.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📈</text></svg>">
+<script>try{var t=localStorage.getItem("mkde:theme");if(t)document.documentElement.dataset.theme=JSON.parse(t)}catch(e){}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header class="top"><div class="top-in">
+  <div class="logo" onclick="go('path')">📈 <b>Marketing</b><span class="hide-m">-Akademie</span></div>
+  <nav class="nav" id="nav"></nav>
+  <div class="stats" id="stats"></div>
+</div></header>
+<main id="view"></main>
+<nav class="bottom" id="bottom"></nav>
+<!-- Daten (leicht zu bearbeiten — siehe README.md) -->
+<script src="js/data/modules.js"></script>
+<script src="js/data/terms1.js"></script>
+<script src="js/data/terms2.js"></script>
+<script src="js/data/terms3.js"></script>
+<script src="js/data/terms4.js"></script>
+<script src="js/data/diagrams.js"></script>
+<script src="js/data/theory.js"></script>
+<script src="js/data/tasks.js"></script>
+<script src="js/data/games.js"></script>
+<script src="js/data/agency.js"></script>
+<!-- Logik -->
+<script src="js/engine/core.js"></script>
+<script src="js/engine/gen.js"></script>
+<script src="js/engine/sim.js"></script>
+<script src="js/ui/ui.js"></script>
+<script src="js/ui/player.js"></script>
+<script src="js/ui/views.js"></script>
+<script src="js/ui/agency.js"></script>
+<script src="js/ui/games.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

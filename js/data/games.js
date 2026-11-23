@@ -1,0 +1,76 @@
+// Spieldaten. Reale Marken — nur allgemein bekannte, überprüfbare Fakten (Slogans und Positionierung).
+// BRANDS: [Hinweis zur Positionierung, Marke, Gruppe (für falsche Antworten), Fakt]
+const BRANDS = [
+  ["Baut ihr Image seit Jahrzehnten um Sicherheit auf; ein Ingenieur der Marke erfand den Dreipunktgurt (1959)", "Volvo", "auto", "Volvo gab das Patent des Dreipunktgurts für alle Hersteller frei."],
+  ["„Freude am Fahren“", "BMW", "auto", "Der deutsche Claim begleitet die Marke seit Jahrzehnten (international: „The Ultimate Driving Machine“)."],
+  ["Hochtechnologische E-Autos, überwiegend direkt verkauft, ohne klassische Händler", "Tesla", "auto", "Der Direktvertrieb ist Teil des Geschäftsmodells."],
+  ["Renntradition und begrenzte Produktion, die die Exklusivität sichert", "Ferrari", "auto", "Die begrenzte Stückzahl ist bewusste Prestigestrategie."],
+  ["Freiheit, Rebellion und eine Community von Motorradfahrern", "Harley-Davidson", "auto", "Die Marke hat einige der bekanntesten Besitzerclubs."],
+  ["Möbel mit gutem Design zum niedrigen Preis: Flachpakete und Selbstmontage", "IKEA", "retail", "Der Kunde „zahlt“ mit Arbeit, was den Preis senkt."],
+  ["„Save Money. Live Better.“ — dauerhaft niedrige Preise", "Walmart", "retail", "Der Slogan wurde 2007 eingeführt."],
+  ["„Earth's most customer-centric company“ — eine auf den Kunden fokussierte Mission", "Amazon", "retail", "Die Formulierung ist Teil der Unternehmensmission."],
+  ["„Verleiht Flügel“ und Extremsport", "Red Bull", "drink", "Red Bull Stratos (2012) — der Sprung von Felix Baumgartner aus der Stratosphäre."],
+  ["Glück und geteilte Momente; Kampagne mit Vornamen auf den Flaschen", "Coca-Cola", "drink", "„Share a Coke“ startete 2011 in Australien."],
+  ["„Dritter Ort“ zwischen Zuhause und Arbeit", "Starbucks", "drink", "Das Konzept „third place“ ist die Basis des Café-Erlebnisses."],
+  ["„Just Do It“ — jeder mit einem Körper ist ein Athlet", "Nike", "fashion", "Der Slogan stammt von 1988."],
+  ["Umweltaktivismus; Anzeige „Kauf diese Jacke nicht“ am Black Friday", "Patagonia", "fashion", "Die Anzeige erschien 2011."],
+  ["Prestige und Leistung; Symbol des Erfolgs", "Rolex", "fashion", "Klassische Positionierung „mehr für mehr“."],
+  ["„Weil ich es mir wert bin“", "L'Oréal Paris", "beauty", "Der Slogan („Because you're worth it“) wurde 1971 geschaffen."],
+  ["Echte Schönheit mit echten Frauen statt Models", "Dove", "beauty", "Die „Campaign for Real Beauty“ startete 2004."],
+  ["„Für das Beste im Mann“", "Gillette", "beauty", "Der Slogan („The Best a Man Can Get“) wurde 1989 eingeführt."],
+  ["Shampoo, positioniert um einen einzigen Nutzen — gegen Schuppen", "Head & Shoulders", "beauty", "Klassisches Beispiel für Nutzensegmentierung."],
+  ["„A Diamond Is Forever“", "De Beers", "lux", "Der Slogan stammt von 1947 und machte den Diamanten zum Symbol ewiger Liebe."],
+  ["„Unbezahlbar“ — es gibt Dinge, die man nicht kaufen kann", "Mastercard", "fin", "Die „Priceless“-Kampagne startete 1997."],
+  ["„Everywhere you want to be“ — überall akzeptiert", "Visa", "fin", "Der Slogan wurde ab Mitte der 80er lange genutzt."],
+  ["„We Try Harder“ — ehrliches Eingeständnis, die Nummer 2 zu sein", "Avis", "service", "Die Kampagne von 1962 ist ein Klassiker der Positionierung gegenüber dem Marktführer."],
+  ["„When it absolutely, positively has to be there overnight“", "FedEx", "service", "Position rund um zuverlässige Lieferung am nächsten Tag."],
+  ["„Belong Anywhere“ — sich überall zu Hause fühlen", "Airbnb", "service", "Der Slogan kam mit dem Rebranding 2014."],
+  ["Niedrigste Ticketpreise ohne Zusatzkomfort", "Ryanair", "service", "Klassisches Modell „weniger für viel weniger“."],
+  ["Kostenlos hören mit Werbung, Premium-Abo ohne Werbung", "Spotify", "service", "Klassisches Freemium-Modell."],
+  ["„Have a break, have a…“ — die Pause ist mit dem Produkt verbunden", "KitKat", "food", "Der Slogan stammt von 1957."],
+  ["„Melts in your mouth, not in your hand“", "M&M's", "food", "Klassisches Beispiel für einen USP."],
+  ["„Ich liebe es“ und lokale Menüs in verschiedenen Ländern", "McDonald's", "food", "Der Slogan stammt von 2003; in Indien gibt es den McAloo Tikki."],
+  ["„Think Different“ — für die Kreativen und Rebellen", "Apple", "tech", "Die Kampagne stammt von 1997."],
+  ["Mission: die Informationen der Welt organisieren und zugänglich und nützlich machen", "Google", "tech", "Die Formulierung ist die offizielle Mission des Unternehmens."],
+  ["Kreatives Spiel mit Steinen; Motto „Nur das Beste ist gut genug“", "LEGO", "tech", "Das Motto stammt vom Gründer Ole Kirk Christiansen."],
+  ["„The Happiest Place on Earth“", "Disneyland", "service", "Der Slogan wird seit Jahrzehnten mit dem Park verbunden."],
+];
+const BRAND_GROUP_NAMES = { auto: "Autos", retail: "Handel", drink: "Getränke", fashion: "Mode", beauty: "Beauty", lux: "Luxus", fin: "Zahlungen", service: "Dienstleistungen", food: "Lebensmittel", tech: "Technologie" };
+
+// CHANNEL_Q: [Situation, richtiger Kanal, warum]; falsche Optionen kommen aus CHANNELS_LIST
+const CHANNELS_LIST = ["Suchmaschinenanzeigen", "Google Maps / lokales SEO", "Instagram/Facebook-Anzeigen", "TikTok", "LinkedIn", "E-Mail an Bestandskunden", "YouTube-Video", "Influencer", "Flyer / lokale Werbung", "Retargeting"];
+const CHANNEL_Q = [
+  ["Ein Schlüsseldienst: Menschen suchen ihn in Panik, wenn sie sich ausgesperrt haben", "Suchmaschinenanzeigen", "Hohe Absicht im Moment des Bedarfs — die Suche erwischt genau diesen Augenblick."],
+  ["Ein neues Café will, dass Menschen im Umkreis von 500 m es finden, wenn sie „Café in der Nähe“ suchen", "Google Maps / lokales SEO", "Lokale Ergebnisse und Bewertungen sind entscheidend für „in der Nähe“."],
+  ["B2B-Software für Personalabteilungen sucht HR-Manager in mittelgroßen Firmen", "LinkedIn", "Targeting nach Position und Branche — genau die B2B-Zielgruppe."],
+  ["Ein Onlineshop will Menschen zurückholen, die ein Produkt im Warenkorb gelassen haben", "Retargeting", "Sie kennen das Produkt schon — es braucht Erinnerung und Anreiz."],
+  ["Modemarke für 16–24-Jährige will schnelle Bekanntheit mit kurzen, lustigen Videos", "TikTok", "Zielgruppe und Format passen."],
+  ["Ein Shop will 8000 Bestandskunden die neue Kollektion verkaufen", "E-Mail an Bestandskunden", "Eigener Kanal, fast ohne Kosten, an Menschen, die schon gekauft haben."],
+  ["Ein Werkzeughersteller will in ausführlichen Tutorials zeigen, wie die Produkte genutzt werden", "YouTube-Video", "Lange Lernvideos und Suche auf der Plattform."],
+  ["Neue Naturkosmetikmarke will Vertrauen in einer Nische, in der Menschen bestimmten Expertinnen folgen", "Influencer", "Das Vertrauen in Nischenstimmen überträgt sich auf die Marke."],
+  ["Pizzeria in einer Kleinstadt will den Leuten im Viertel das Mittagsmenü zeigen", "Flyer / lokale Werbung", "Niedriger Preis und genaues geografisches Targeting für ein lokales Geschäft."],
+  ["Möbelhaus will Frauen von 28–45, die eine Wohnung einrichten, mit visuellen Anzeigen erreichen", "Instagram/Facebook-Anzeigen", "Visuelles Format und Targeting nach Interessen und Demografie."],
+  ["Steuerberatung will Kleinunternehmer erreichen, die „Steuerberater Kosten“ suchen", "Suchmaschinenanzeigen", "Transaktionale Absicht in der Suche."],
+  ["Ein Industrieausrüster will Ingenieure zu einem Webinar einladen", "LinkedIn", "Berufliche Zielgruppe nach Position und Fähigkeiten."],
+  ["Ein Fitnessstudio will Mitglieder erinnern, die 3 Wochen nicht da waren", "E-Mail an Bestandskunden", "Persönliche Nachricht an bestehende Kunden."],
+  ["Ein Urlaubshotel will Menschen, die den Sommer planen, schöne Bilder zeigen", "Instagram/Facebook-Anzeigen", "Visuelle Inspiration und Targeting nach Interessen (Reisen)."],
+  ["Eine Zahnärztin will mehr positive Bewertungen und ganz oben auf der Karte stehen", "Google Maps / lokales SEO", "Lokales Profil und Bewertungen bestimmen die Sichtbarkeit in der Karte."],
+  ["Ein Mobile Game will viele Installationen junger Menschen mit Kurzvideos", "TikTok", "Kurzvideo und junges Publikum."],
+  ["Ein Online-Programmierkurs zeigt die Anzeige Menschen, die die Preisseite gesehen haben", "Retargeting", "Warme Besucher, nah an der Entscheidung."],
+  ["Eine Küchengerätemarke will ausführliche Tests und Rezepte im Langformat", "YouTube-Video", "Vorführungen und Suche nach Tests."],
+  ["Eine lokale Baufirma will die Haushalte in einem neuen Einfamilienhausgebiet erreichen", "Flyer / lokale Werbung", "Exakte geografische Abdeckung konkreter Häuser."],
+  ["Neue Sportgetränkemarke will authentische Empfehlungen von Sportlern", "Influencer", "Sportler sind eine Bezugsgruppe für das Publikum."],
+];
+
+// Paare für „häufige Verwechslungen“ (für Aufgaben und das Glossar)
+const CONFUSIONS = [
+  ["reach", "impressions"], ["cpc", "cpm"], ["market-share", "market-growth-rate"], ["markup", "gross-margin"], ["roi", "roas"],
+  ["cpa", "cac"], ["ctr", "call-to-action"], ["need", "want"], ["want", "demand"], ["brand-identity", "brand-image"],
+  ["line-extension", "brand-extension"], ["points-of-parity", "points-of-difference"], ["usp", "value-proposition"],
+  ["retargeting", "lookalike-audience"], ["seo", "sem"], ["penetration-pricing", "price-skimming"], ["push-strategy", "pull-strategy"],
+  ["wholesaler", "retailer"], ["multichannel-distribution", "omnichannel"], ["qualitative-research", "quantitative-research"],
+  ["primary-data", "secondary-data"], ["selling-concept", "marketing-concept"], ["verbraucherzentrale", "bundeskartellamt"], ["star", "question-mark"],
+  ["cash-cow", "dog"], ["market-development", "product-development"], ["attribution", "incrementality"], ["nps", "csat"],
+  ["fixed-costs", "variable-costs"], ["loss-leader", "decoy-effect"], ["captive-product-pricing", "bundle-pricing"],
+  ["paid-media", "earned-media"], ["trademark", "copyright"], ["churn-rate", "retention-rate"],
+];
